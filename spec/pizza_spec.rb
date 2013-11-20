@@ -33,5 +33,11 @@ describe Pizza::Topping do
 			topping = Pizza::Topping.new 'bell peppers', vegetarian: true
 			expect(topping.vegetarian).to eq(true)
 		end
+	describe '.toppingss' do
+		it "returns true if all the pizza's toppings are vegetarian" do
+			topping = Pizza::Topping.new 'onions', vegetarian: true
+			expect(topping.vegetarian). to eq(true)
+		end
+	 	end
 	end
 end

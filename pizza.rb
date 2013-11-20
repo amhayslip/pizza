@@ -4,6 +4,15 @@ module Pizza
   	def initialize(toppings= [Topping.new('cheese', vegetarian: true)])
   		@toppings = toppings
   	end
+
+    def vegetarian?
+      if @toppings.any? {|topping| topping.vegetarian == true}
+         return true
+      else
+         return false
+      end
+    end
+
   end
 
   class Topping
