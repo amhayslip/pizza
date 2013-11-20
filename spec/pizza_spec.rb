@@ -21,6 +21,30 @@ describe Pizza::Pie do
 	  expect(pizza.toppings.first.name).to eq('cheese')
 	end
   end
+  describe 'add_toppings' do
+  	it 'adds toppings to the pizza' do
+  	  toppings = [Pizza::Topping.new('spinach', vegetarian: true),
+  	  Pizza::Topping.new('bacon')	
+  	  ]
+  	 pizza = Pizza::Pie.new(toppings) 
+  	 peppers = Pizza::Topping.new('peppers')
+  	 pizza.add_toppings(peppers)
+  	 expect(pizza.toppings.length). to eq(3)
+  	end
+  end
+  describe 'deliver!' do
+  	it 'marks a delivery_time attriube on the pixxa for 30 minutes from now.' do
+  	  pizza = Pizza::Pie.new
+  	  pizza.deliver!
+  	  expect(pizza.delivery_time). to eq(Time.now + 30*60)
+  	end
+  end
+
+
+
+
+
+
 end 
 
 describe Pizza::Topping do
@@ -33,7 +57,7 @@ describe Pizza::Topping do
 			topping = Pizza::Topping.new 'bell peppers', vegetarian: true
 			expect(topping.vegetarian).to eq(true)
 		end
-	describe '.toppingss' do
+	describe '.vegetarian?' do
 		it "returns true if all the pizza's toppings are vegetarian" do
 			topping = Pizza::Topping.new 'onions', vegetarian: true
 			expect(topping.vegetarian). to eq(true)
@@ -41,3 +65,15 @@ describe Pizza::Topping do
 	 	end
 	end
 end
+
+
+
+
+
+
+
+
+
+
+
+

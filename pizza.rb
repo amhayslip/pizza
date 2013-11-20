@@ -13,6 +13,10 @@ module Pizza
       end
     end
 
+    def add_toppings(topping)
+      @toppings << topping
+    end
+
   end
 
   class Topping
@@ -21,5 +25,6 @@ module Pizza
   		@name = name
   		@vegetarian = vegetarian
   	end
+
   end
 end
