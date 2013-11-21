@@ -1,4 +1,4 @@
-require 'rubygems'
+ddrequire 'rubygems'
 require 'bundler/setup'
 require 'rspec'
 require_relative '../pizza'
@@ -32,12 +32,24 @@ describe Pizza::Pie do
   	 expect(pizza.toppings.length). to eq(3)
   	end
   end
-  describe 'deliver!' do
-  	it 'marks a delivery_time attriube on the pixxa for 30 minutes from now.' do
-  	  pizza = Pizza::Pie.new
-  	  pizza.deliver!
-  	  expect(pizza.delivery_time). to eq(Time.now + 30*60)
+  describe '.deliver!' do
+  	it 'marks a delivery_time attriube on the pizza for 30 minutes from now.' do
+  	  toppings = []
+  	  delpizza = Pizza::Pie.new(toppings)
+  	  time = Time.now
+  	  delpizza.deliver!(time)
+  	  expect(delpizza.delivery_time).to eq(time + 30*60)
   	end
+  end
+
+  describe '.late?' do
+  	it 'returns true if it is past the delivery time, false otherwise.' do
+  	  delpizza = Pizza::Pie.new
+  	  time = Time.now
+  	  delpizza.deliver!
+  	  delpizza.late?(time)
+  	  expect(delpizza.late?). to eq(false)	
+  	end	
   end
 
 
